@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="860" viewBox="0 0 1600 860">
+<rect width="1600" height="860" fill="#FFFFFF"/>
+<text x="60" y="64" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#1F2937" text-anchor="start">Shopping Hunter — how it works</text>
+<text x="60" y="96" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#6B7280" text-anchor="start">You name a product. It finds every version of it on Amazon and tells you which one is genuinely cheapest to your door.</text>
+<rect x="60" y="118" width="18" height="18" rx="4" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2"/>
+<text x="88" y="133" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#1F2937" text-anchor="start">AI agent decides</text>
+<rect x="270" y="118" width="18" height="18" rx="4" fill="#CCFBF1" stroke="#0D9488" stroke-width="2"/>
+<text x="298" y="133" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#1F2937" text-anchor="start">Python code runs</text>
+<rect x="480" y="118" width="18" height="18" rx="4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="2"/>
+<text x="508" y="133" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#1F2937" text-anchor="start">You / Amazon</text>
+<rect x="52.0" y="196" width="166" height="128" rx="12" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="2"/>
+<text x="135.0" y="248" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#374151" text-anchor="middle">You ask for</text>
+<text x="135.0" y="270" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#374151" text-anchor="middle">a product</text>
+<text x="135.0" y="308" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#6B7280" text-anchor="middle">YOU</text>
+<line x1="221.0" y1="260.0" x2="230.0" y2="260.0" stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round"/>
+<polygon points="239.0,260.0 227.0,253.5 227.0,266.5" fill="#94A3B8"/>
+<rect x="242.0" y="196" width="166" height="128" rx="12" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2"/>
+<text x="325.0" y="248" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#3B0764" text-anchor="middle">Plan the</text>
+<text x="325.0" y="270" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#3B0764" text-anchor="middle">searches</text>
+<text x="325.0" y="308" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#7C3AED" text-anchor="middle">AGENT</text>
+<circle cx="264.0" cy="194" r="16" fill="#7C3AED"/>
+<text x="264.0" y="200" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<line x1="411.0" y1="260.0" x2="420.0" y2="260.0" stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round"/>
+<polygon points="429.0,260.0 417.0,253.5 417.0,266.5" fill="#94A3B8"/>
+<rect x="432.0" y="196" width="166" height="128" rx="12" fill="#CCFBF1" stroke="#0D9488" stroke-width="2"/>
+<text x="515.0" y="248" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#134E4A" text-anchor="middle">Search</text>
+<text x="515.0" y="270" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#134E4A" text-anchor="middle">Amazon</text>
+<text x="515.0" y="308" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0D9488" text-anchor="middle">TOOL</text>
+<circle cx="454.0" cy="194" r="16" fill="#0D9488"/>
+<text x="454.0" y="200" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="515.0" y="350" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#0D9488" text-anchor="middle">search_amazon</text>
+<line x1="601.0" y1="260.0" x2="610.0" y2="260.0" stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round"/>
+<polygon points="619.0,260.0 607.0,253.5 607.0,266.5" fill="#94A3B8"/>
+<rect x="622.0" y="196" width="166" height="128" rx="12" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2"/>
+<text x="705.0" y="248" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#3B0764" text-anchor="middle">Keep only the</text>
+<text x="705.0" y="270" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#3B0764" text-anchor="middle">real product</text>
+<text x="705.0" y="308" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#7C3AED" text-anchor="middle">AGENT</text>
+<circle cx="644.0" cy="194" r="16" fill="#7C3AED"/>
+<text x="644.0" y="200" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<line x1="791.0" y1="260.0" x2="800.0" y2="260.0" stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round"/>
+<polygon points="809.0,260.0 797.0,253.5 797.0,266.5" fill="#94A3B8"/>
+<rect x="812.0" y="196" width="166" height="128" rx="12" fill="#CCFBF1" stroke="#0D9488" stroke-width="2"/>
+<text x="895.0" y="248" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#134E4A" text-anchor="middle">Read every</text>
+<text x="895.0" y="270" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#134E4A" text-anchor="middle">offer</text>
+<text x="895.0" y="308" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0D9488" text-anchor="middle">TOOL</text>
+<circle cx="834.0" cy="194" r="16" fill="#0D9488"/>
+<text x="834.0" y="200" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="895.0" y="350" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#0D9488" text-anchor="middle">get_offers</text>
+<line x1="981.0" y1="260.0" x2="990.0" y2="260.0" stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round"/>
+<polygon points="999.0,260.0 987.0,253.5 987.0,266.5" fill="#94A3B8"/>
+<rect x="1002.0" y="196" width="166" height="128" rx="12" fill="#CCFBF1" stroke="#0D9488" stroke-width="2"/>
+<text x="1085.0" y="248" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#134E4A" text-anchor="middle">Work out the</text>
+<text x="1085.0" y="270" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#134E4A" text-anchor="middle">real price</text>
+<text x="1085.0" y="308" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0D9488" text-anchor="middle">CODE</text>
+<circle cx="1024.0" cy="194" r="16" fill="#0D9488"/>
+<text x="1024.0" y="200" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<line x1="1171.0" y1="260.0" x2="1180.0" y2="260.0" stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round"/>
+<polygon points="1189.0,260.0 1177.0,253.5 1177.0,266.5" fill="#94A3B8"/>
+<rect x="1192.0" y="196" width="166" height="128" rx="12" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2"/>
+<text x="1275.0" y="248" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#3B0764" text-anchor="middle">Explain the</text>
+<text x="1275.0" y="270" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#3B0764" text-anchor="middle">winner</text>
+<text x="1275.0" y="308" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#7C3AED" text-anchor="middle">AGENT</text>
+<circle cx="1214.0" cy="194" r="16" fill="#7C3AED"/>
+<text x="1214.0" y="200" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+<line x1="1361.0" y1="260.0" x2="1370.0" y2="260.0" stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round"/>
+<polygon points="1379.0,260.0 1367.0,253.5 1367.0,266.5" fill="#94A3B8"/>
+<rect x="1382.0" y="196" width="166" height="128" rx="12" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="2"/>
+<text x="1465.0" y="248" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#374151" text-anchor="middle">You click</text>
+<text x="1465.0" y="270" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#374151" text-anchor="middle">Add to cart</text>
+<text x="1465.0" y="308" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#6B7280" text-anchor="middle">YOU</text>
+<path d="M 705.0 362 L 705.0 384 L 515.0 384 L 515.0 364" fill="none" stroke="#7C3AED" stroke-width="2.2" stroke-dasharray="7,5"/>
+<line x1="515.0" y1="374.0" x2="515.0" y2="373.0" stroke="#7C3AED" stroke-width="2.2" stroke-linecap="round"/>
+<polygon points="515.0,364.0 508.5,376.0 521.5,376.0" fill="#7C3AED"/>
+<text x="610.0" y="410" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#3B0764" text-anchor="middle">found nothing? the agent searches again, in its own words</text>
+<text x="610.0" y="430" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="middle">this loop is what makes it an agent and not a script</text>
+<rect x="60.0" y="472" width="486" height="320" rx="14" fill="#FFFFFF" stroke="#7C3AED" stroke-width="2.4"/>
+<rect x="60.0" y="472" width="486" height="52" rx="14" fill="#EDE9FE"/>
+<rect x="60.0" y="510" width="486" height="14" fill="#EDE9FE"/>
+<text x="84.0" y="506" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#3B0764" text-anchor="start">The AI — 4 small agents</text>
+<text x="84.0" y="548" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#6B7280" text-anchor="start">Each makes one judgement call, then hands back.</text>
+<circle cx="90.0" cy="577" r="4" fill="#7C3AED"/>
+<text x="106.0" y="582" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#1F2937" text-anchor="start">What to search for</text>
+<text x="106.0" y="601" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">turns your words into good Amazon searches</text>
+<circle cx="90.0" cy="624" r="4" fill="#7C3AED"/>
+<text x="106.0" y="629" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#1F2937" text-anchor="start">Which listings are really it</text>
+<text x="106.0" y="648" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">throws out cases, bundles, older models, fakes</text>
+<circle cx="90.0" cy="671" r="4" fill="#7C3AED"/>
+<text x="106.0" y="676" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#1F2937" text-anchor="start">Whether to try again</text>
+<text x="106.0" y="695" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">when a marketplace comes back empty</text>
+<circle cx="90.0" cy="718" r="4" fill="#7C3AED"/>
+<text x="106.0" y="723" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#1F2937" text-anchor="start">How to say the answer</text>
+<text x="106.0" y="742" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">a short plain summary of the winner</text>
+<text x="84.0" y="770" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#3B0764" text-anchor="start">It never works out a price and never buys.</text>
+<rect x="557.0" y="472" width="486" height="320" rx="14" fill="#FFFFFF" stroke="#0D9488" stroke-width="2.4"/>
+<rect x="557.0" y="472" width="486" height="52" rx="14" fill="#CCFBF1"/>
+<rect x="557.0" y="510" width="486" height="14" fill="#CCFBF1"/>
+<text x="581.0" y="506" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#134E4A" text-anchor="start">The tools it can use</text>
+<text x="581.0" y="548" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#6B7280" text-anchor="start">Ready-made Python functions. The AI chooses when to call them.</text>
+<circle cx="587.0" cy="577" r="4" fill="#0D9488"/>
+<text x="603.0" y="582" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#1F2937" text-anchor="start">search_amazon</text>
+<text x="603.0" y="601" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">give it words, get back a list of listings</text>
+<circle cx="587.0" cy="624" r="4" fill="#0D9488"/>
+<text x="603.0" y="629" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#1F2937" text-anchor="start">get_offers</text>
+<text x="603.0" y="648" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">opens a listing and reads the price, shipping,</text>
+<text x="603.0" y="665" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">customs, stock, delivery date and seller —</text>
+<text x="603.0" y="682" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">for every seller of that same product</text>
+<text x="581.0" y="770" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#B91C1C" text-anchor="start">add_to_cart exists — but only your click can run it.</text>
+<rect x="1054.0" y="472" width="486" height="320" rx="14" fill="#FFFFFF" stroke="#0D9488" stroke-width="2.4"/>
+<rect x="1054.0" y="472" width="486" height="52" rx="14" fill="#CCFBF1"/>
+<rect x="1054.0" y="510" width="486" height="14" fill="#CCFBF1"/>
+<text x="1078.0" y="506" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#134E4A" text-anchor="start">The code around it</text>
+<text x="1078.0" y="548" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#6B7280" text-anchor="start">The harness: everything the AI is not allowed to do.</text>
+<circle cx="1084.0" cy="577" r="4" fill="#0D9488"/>
+<text x="1100.0" y="582" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#1F2937" text-anchor="start">Runs the steps in order</text>
+<text x="1100.0" y="601" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">and caps time, searches and pages</text>
+<circle cx="1084.0" cy="624" r="4" fill="#0D9488"/>
+<text x="1100.0" y="629" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#1F2937" text-anchor="start">Drives a real Chrome window</text>
+<text x="1100.0" y="648" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">signed in as you, so the prices are yours</text>
+<circle cx="1084.0" cy="671" r="4" fill="#0D9488"/>
+<text x="1100.0" y="676" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#1F2937" text-anchor="start">Does all the maths</text>
+<text x="1100.0" y="695" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">converts to JOD, adds shipping + customs, sorts</text>
+<circle cx="1084.0" cy="718" r="4" fill="#0D9488"/>
+<text x="1100.0" y="723" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#1F2937" text-anchor="start">Checks every row</text>
+<text x="1100.0" y="742" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">anything it can't verify never reaches you</text>
+<text x="1540" y="834" font-family="Segoe UI, Inter, system-ui, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#6B7280" text-anchor="end">Python · OpenAI Agents SDK · Playwright · FastAPI</text>
+</svg>

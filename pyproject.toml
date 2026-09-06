@@ -1,0 +1,32 @@
+[project]
+name = "shopping-hunter"
+version = "0.1.0"
+description = "Agentic Amazon product hunter: search, verify shipping, rank by landed cost."
+requires-python = ">=3.11"
+dependencies = [
+  "openai-agents==0.22.0",
+  "openai==3.8.0",
+  "pydantic==2.13.5",
+  "pydantic-settings==2.15.0",
+  "playwright==1.62.0",
+  "fastapi==0.141.1",
+  "uvicorn[standard]==0.52.4",
+  "httpx==0.28.1",
+  "aiosqlite==0.22.1",
+  "rapidfuzz==3.14.6",
+  "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.1.1", "pytest-asyncio", "hypothesis==6.167.1"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["shopping_hunter*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

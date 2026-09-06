@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shopping Hunter</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --ink:#1b1f24; --muted:#5f6b7a; --line:#e3e6ea; --accent:#2563eb; --ok:#15803d; --warn:#b45309; --bad:#b91c1c; --chip:#eef2ff; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0f1115; --card:#171a21; --ink:#e7eaf0; --muted:#9aa4b2; --line:#2a2f3a; --accent:#60a5fa; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --chip:#1e2536; } }
+  * { box-sizing:border-box } body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  main { max-width:1180px; margin:0 auto; padding:20px; }
+  h1 { font-size:20px; margin:0 0 4px } h2 { font-size:15px; margin:0 0 10px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.04em }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px; margin-bottom:16px }
+  .row { display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end }
+  label { display:flex; flex-direction:column; gap:4px; font-size:12px; color:var(--muted) }
+  input[type=text], input[type=number], select { padding:8px 10px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--ink); font-size:14px; min-width:120px }
+  input[type=text]#query { min-width:340px; flex:1 }
+  button { padding:8px 14px; border-radius:6px; border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; font-size:14px }
+  button.primary { background:var(--accent); border-color:var(--accent); color:#fff } button:disabled { opacity:.5; cursor:default }
+  .chk { flex-direction:row; align-items:center; gap:6px; color:var(--ink) }
+  .status { display:flex; gap:10px; flex-wrap:wrap }
+  .pill { padding:6px 10px; border-radius:999px; background:var(--chip); font-size:12px; display:flex; gap:8px; align-items:center }
+  .dot { width:8px; height:8px; border-radius:50% } .dot.ok{background:var(--ok)} .dot.bad{background:var(--bad)} .dot.unk{background:var(--warn)}
+  #log { font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; max-height:220px; overflow:auto; background:var(--bg); border:1px solid var(--line); border-radius:6px; padding:8px; white-space:pre-wrap }
+  #log .ev-needs_human { color:var(--warn); font-weight:600 } #log .ev-hunt_finished { color:var(--ok); font-weight:600 } #log .ev-candidate_decision { color:var(--muted) }
+  table { width:100%; border-collapse:collapse; font-size:13px } th, td { text-align:left; padding:7px 8px; border-bottom:1px solid var(--line); vertical-align:top } th { color:var(--muted); font-weight:600; font-size:12px }
+  td.num, th.num { text-align:right; font-variant-numeric:tabular-nums }
+  .badge { display:inline-block; padding:1px 6px; border-radius:4px; font-size:11px; background:var(--chip); color:var(--muted) }
+  .badge.amazon{color:var(--ok)} .badge.amazon_derived{color:var(--accent)} .badge.estimate{color:var(--warn)} .badge.unavailable{color:var(--bad)}
+  .muted { color:var(--muted) } .small { font-size:12px } .wrap { overflow-x:auto }
+  details summary { cursor:pointer; color:var(--muted); font-size:13px }
+  .banner { padding:10px 12px; border-radius:6px; background:var(--chip); margin-bottom:10px } .banner.warn { border-left:4px solid var(--warn) }
+  ul { margin:6px 0; padding-left:18px } a { color:var(--accent) }
+  .title { max-width:420px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:block }
+</style>
+</head>
+<body>
+<main>
+  <h1>Shopping Hunter</h1>
+  <p class="muted small" id="tagline"></p>
+
+  <section class="card">
+    <h2>Accounts</h2>
+    <div class="status" id="status"><span class="muted small">checking…</span></div>
+    <div class="banner warn" style="margin:10px 0 0">Keep the Shopping Hunter browser window open while you use this page. It is a separate profile from your everyday Chrome, so sign in there once per marketplace and set the delivery address to <b id="ctry"></b>. The app never sees your password.</div>
+    <p class="muted small" id="browserinfo" style="margin:8px 0 0"></p>
+  </section>
+
+  <section class="card">
+    <h2>Hunt</h2>
+    <form id="form">
+      <div class="row">
+        <label>Product (brand + exact model)<input type="text" id="query" placeholder="Logitech MX Master 3S" required minlength="2" maxlength="200"></label>
+        <label>Depth<select id="depth"><option value="ordinary">Ordinary</option><option value="thorough">Thorough</option></select></label>
+        <label>Max landed cost (JOD)<input type="number" id="budget" min="0" step="0.5" placeholder="none"></label>
+        <label>Min rating<input type="number" id="min_rating" min="0" max="5" step="0.1" value="4.0"></label>
+        <label>Min # ratings<input type="number" id="min_ratings" min="0" step="10" value="50"></label>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <span id="mkts"></span>
+        <label class="chk"><input type="checkbox" id="other_sellers"> include other sellers</label>
+        <label class="chk"><input type="checkbox" id="allow_used"> allow renewed/used</label>
+        <button class="primary" id="go" type="submit">Hunt</button>
+        <button id="cancel" type="button" disabled>Cancel</button>
+      </div>
+    </form>
+    <div id="depthnote" class="muted small" style="margin-top:8px"></div>
+  </section>
+
+  <section class="card">
+    <h2>Progress <span id="runstate" class="badge"></span></h2>
+    <div id="log"></div>
+  </section>
+
+  <section class="card" id="results" hidden>
+    <h2>Results</h2>
+    <div id="banners"></div>
+    <div id="summary"></div>
+    <div class="wrap"><table id="ranked"><thead><tr>
+      <th>#</th><th>Marketplace</th><th>Listing</th><th>Seller</th><th class="num">Price</th><th class="num">Shipping</th><th class="num">Import fees</th><th class="num">Landed (JOD)</th><th>Delivery</th><th>Rating</th><th></th>
+    </tr></thead><tbody></tbody></table></div>
+    <div id="unconfirmed"></div>
+    <details id="excluded"><summary></summary><div class="wrap"><table><thead><tr><th>Marketplace</th><th>ASIN</th><th>Reason</th><th>Title</th></tr></thead><tbody></tbody></table></div></details>
+    <details id="coverage"><summary>Coverage</summary><pre class="small"></pre></details>
+    <div id="caveats" class="small muted"></div>
+  </section>
+</main>
+
+<script>
+const CFG = __CONFIG__;
+const $ = (s) => document.querySelector(s);
+let currentRun = null, es = null;
+
+document.getElementById('tagline').textContent =
+  `Searches ${CFG.marketplaces.join(', ')} · ranks by landed cost in ${CFG.currency} to ${CFG.country} · model ${CFG.model}` +
+  (CFG.fake_llm ? ' · FAKE LLM' : '') + (CFG.fake_browser ? ' · FIXTURE BROWSER' : '');
+$('#ctry').textContent = CFG.country;
+
+// marketplace checkboxes
+$('#mkts').innerHTML = CFG.marketplaces.map(m => `<label class="chk"><input type="checkbox" name="mkt" value="${m}" checked> ${m}</label>`).join('');
+try { const q = localStorage.getItem('sh.query'); if (q) $('#query').value = q; } catch (e) {}
+
+function depthNote() {
+  const b = CFG.budgets[$('#depth').value];
+  $('#depthnote').textContent = `Up to ${b.max_queries_per_marketplace} queries × ${b.max_pages_per_query} page(s) per marketplace, ${b.max_candidates_per_marketplace} inspected listings per marketplace, ${b.max_run_seconds}s total.`;
+}
+$('#depth').addEventListener('change', depthNote); depthNote();
+
+async function api(method, path, body) {
+  const r = await fetch(path, { method, headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': CFG.csrf }, body: body ? JSON.stringify(body) : undefined });
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(data.detail || data.error || r.statusText);
+  return data;
+}
+
+async function refreshStatus() {
+  try {
+    const s = await api('GET', '/status');
+    $('#status').innerHTML = s.marketplaces.map(m => {
+      const cls = m.logged_in === true ? 'ok' : m.logged_in === false ? 'bad' : 'unk';
+      const txt = m.logged_in === true ? 'signed in' : m.logged_in === false ? 'not signed in' : 'unknown';
+      const loc = m.deliver_to_ok ? ` · delivers to ${CFG.country}` : (m.detail ? ` · ${m.detail}` : '');
+      return `<span class="pill"><span class="dot ${cls}"></span>${m.marketplace}: ${txt}${loc} <button data-login="${m.marketplace}" class="small">Open login</button></span>`;
+    }).join('');
+    document.querySelectorAll('[data-login]').forEach(b => b.onclick = async () => {
+      b.disabled = true;
+      try { const r = await api('POST', `/login/${b.dataset.login}`); logLine({event:'login', detail:r.detail}); if (!r.opened) alert(r.detail); }
+      catch (e) { logLine({event:'error', detail:e.message}); alert(e.message); }
+      b.disabled = false;
+    });
+    $('#browserinfo').textContent = s.fake_browser ? 'Fixture browser (no real Amazon).'
+      : `Browser: ${s.browser_channel || 'bundled chromium'}` + (s.browser_relaunches ? ` · reopened ${s.browser_relaunches}× after being closed` : '');
+    if (s.active_run && !currentRun) attach(s.active_run.run_id);
+  } catch (e) { $('#status').innerHTML = `<span class="muted small">status unavailable: ${e.message}</span>`; }
+}
+
+function logLine(ev) {
+  const el = document.createElement('div');
+  el.className = 'ev-' + (ev.event || 'msg');
+  const skip = new Set(['seq','ts','run_id','event']);
+  const rest = Object.entries(ev).filter(([k]) => !skip.has(k)).map(([k,v]) => `${k}=${typeof v === 'object' ? JSON.stringify(v) : v}`).join(' ');
+  el.textContent = `${ev.ts ? ev.ts.slice(11,19) : ''} ${ev.event}  ${rest}`.slice(0, 400);
+  const log = $('#log'); log.appendChild(el); log.scrollTop = log.scrollHeight;
+}
+
+function setState(st) {
+  $('#runstate').textContent = st || '';
+  const running = st === 'running' || st === 'needs_human';
+  $('#go').disabled = running; $('#cancel').disabled = !running;
+}
+
+function attach(runId) {
+  currentRun = runId; setState('running');
+  if (es) es.close();
+  es = new EventSource(`/hunts/${runId}/events`);
+  es.onmessage = (m) => logLine(JSON.parse(m.data));
+  ['phase','plan_ready','search_started','search_finished','candidate_decision','offer_fetch_started','offer_fetch_finished','deliver_to_fix','deliver_to_result','needs_human','needs_human_cleared','agent_started','agent_finished','scored','summary_rejected','validation_failed','marketplace_failed','marketplace_budget_stop','deep_pass_skipped','deep_pass_finished','cancel_requested','hunt_started','hunt_finished','keepalive','run_closed']
+    .forEach(name => es.addEventListener(name, (m) => {
+      const ev = JSON.parse(m.data);
+      if (name === 'keepalive') return;
+      logLine(ev);
+      if (name === 'needs_human') { setState('needs_human'); banner(`Amazon showed a robot check on ${ev.marketplace}. Solve it in the Shopping Hunter browser window; the run resumes by itself.`, 'warn'); }
+      if (name === 'needs_human_cleared') setState('running');
+      if (name === 'run_closed') { es.close(); es = null; loadResult(runId); }
+    }));
+  es.onerror = () => { /* EventSource reconnects with Last-Event-ID */ };
+}
+
+function banner(text, cls) { const d = document.createElement('div'); d.className = 'banner ' + (cls || ''); d.textContent = text; $('#banners').appendChild(d); $('#results').hidden = false; }
+
+const fmt = (v) => v == null ? '–' : (typeof v === 'string' && /^-?\d+(\.\d+)?$/.test(v) ? Number(v).toFixed(3).replace(/\.?0+$/, '') : v);
+const money = (m) => m ? `${Number(m.amount).toFixed(2)} ${m.currency}` : '–';
+
+async function loadResult(runId) {
+  let rec;
+  try { rec = await api('GET', `/hunts/${runId}`); } catch (e) { logLine({event:'error', detail:e.message}); return; }
+  setState(rec.state); currentRun = null;
+  const r = rec.result; if (!r) { banner(`Run ended: ${rec.state} ${rec.error || ''}`, 'warn'); return; }
+  $('#results').hidden = false; $('#banners').innerHTML = '';
+  if (r.status !== 'completed') banner(`Run ${r.status}${r.status_reason ? ': ' + r.status_reason : ''}. Results below are partial but validated.`, 'warn');
+  $('#summary').innerHTML = r.summary ? `<p>${escapeHtml(r.summary)}</p>` : '<p class="muted">No summary.</p>';
+
+  const tb = $('#ranked tbody'); tb.innerHTML = '';
+  if (!r.ranked.length) tb.innerHTML = '<tr><td colspan="11" class="muted">No offer could be confirmed as shipping to ' + CFG.country + ' with a complete landed cost.</td></tr>';
+  r.ranked.forEach((s, i) => {
+    const tr = document.createElement('tr');
+    const fees = `${fmt(s.fees_jod)} <span class="badge ${s.fees_source}" title="confidence: ${s.fees_confidence}${s.rule_version ? ', rules ' + s.rule_version : ''}">${s.fees_source.replace('_',' ')}</span>`;
+    tr.innerHTML = `<td>${i+1}</td><td>${s.marketplace}</td>
+      <td><a class="title" href="${s.url}" target="_blank" rel="noopener" title="${escapeHtml(s.title)}">${escapeHtml(s.title)}</a><span class="small muted">${s.resolved_asin}${s.offer_id ? ' · other seller' : ''}${s.provenance.source === 'cache' ? ' · cached' : ''}</span></td>
+      <td>${escapeHtml(s.seller || '–')}<br><span class="small muted">${s.condition}</span></td>
+      <td class="num">${money(s.price)}<br><span class="small muted">${fmt(s.price_jod)} JOD</span></td>
+      <td class="num">${money(s.shipping)}${s.fees_included_in_shipping ? '<br><span class="small muted">incl. import fees</span>' : ''}</td>
+      <td class="num">${fees}</td>
+      <td class="num"><b>${fmt(s.landed_jod)}</b></td>
+      <td>${s.delivery_days == null ? '–' : s.delivery_days + ' d'}</td>
+      <td>${s.rating ?? '–'} <span class="small muted">(${s.ratings_count ?? '–'})</span></td>
+      <td><button data-token="${s.offer_token || ''}" ${s.offer_token ? '' : 'disabled'}>Add to cart</button></td>`;
+    tb.appendChild(tr);
+  });
+  tb.querySelectorAll('button[data-token]').forEach(b => b.onclick = () => addToCart(b));
+
+  $('#unconfirmed').innerHTML = r.unconfirmed.length ? `<h2 style="margin-top:14px">Could not confirm (${r.unconfirmed.length})</h2><ul>` +
+    r.unconfirmed.map(s => `<li><a href="${s.url}" target="_blank" rel="noopener">${s.marketplace} ${s.resolved_asin}</a> ${escapeHtml(s.seller || '')} · ships to ${CFG.country}: ${s.ships_to_country} · stock: ${s.in_stock ?? 'unknown'} · landed: ${fmt(s.landed_jod)} ${s.landed_cost_complete ? '' : '(incomplete)'} ${s.shipping_evidence ? '<span class="small muted">— ' + escapeHtml(s.shipping_evidence) + '</span>' : ''}</li>`).join('') + '</ul>' : '';
+
+  const ex = $('#excluded'); ex.querySelector('summary').textContent = `Excluded listings (${r.excluded.length})`;
+  ex.querySelector('tbody').innerHTML = r.excluded.map(e => `<tr><td>${e.marketplace}</td><td>${e.asin}</td><td><span class="badge">${e.reason_code}</span> <span class="small muted">${escapeHtml(e.reason)}</span></td><td class="small">${escapeHtml(e.title || '')}</td></tr>`).join('');
+  const c = r.coverage;
+  $('#coverage pre').textContent = `attempted: ${c.marketplaces_attempted.join(', ')}\ncompleted: ${c.marketplaces_completed.join(', ')}\nqueries: ${c.queries_used.map(q => q.marketplace + ' "' + q.query + '"').join('; ')}\npages: ${c.pages_scanned}  candidates: ${c.candidates_before_dedup} → ${c.candidates_after_dedup} after dedup  truncated: ${c.truncated_by_cap}  accepted but not inspected: ${c.accepted_not_fetched}\noffers inspected: ${c.offers_inspected}  skipped: ${JSON.stringify(c.offers_skipped)}\nvalidation errors: ${r.validation_errors.length ? r.validation_errors.join(' | ') : 'none'}`;
+  $('#caveats').innerHTML = r.caveats.length ? '<ul>' + r.caveats.map(x => `<li>${escapeHtml(x)}</li>`).join('') + '</ul>' : '';
+}
+
+async function addToCart(btn, confirmFlag) {
+  const key = btn.dataset.key || (btn.dataset.key = crypto.randomUUID().replace(/-/g, '').slice(0, 24));
+  btn.disabled = true; const label = btn.textContent; btn.textContent = 'checking…';
+  try {
+    const r = await api('POST', '/cart', { offer_token: btn.dataset.token, idempotency_key: key, confirm: !!confirmFlag });
+    if (r.status === 'needs_confirmation') {
+      if (window.confirm(r.detail + '\n\nAdd it anyway?')) { btn.disabled = false; return addToCart(btn, true); }
+      btn.textContent = label; btn.disabled = false; return;
+    }
+    if (r.status === 'added' || r.status === 'already_added') {
+      btn.textContent = 'In cart ✓'; logLine({event:'cart', status:r.status, detail:r.detail || '', cart_count:r.cart_count});
+      if (r.cart_url) { const a = document.createElement('a'); a.href = r.cart_url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = ' open cart'; btn.after(a); }
+    } else { btn.textContent = label; btn.disabled = false; logLine({event:'cart_failed', detail:r.detail}); alert('Not added: ' + r.detail); }
+  } catch (e) { btn.textContent = label; btn.disabled = false; alert(e.message); }
+}
+
+function escapeHtml(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+$('#form').addEventListener('submit', async (ev) => {
+  ev.preventDefault();
+  const body = {
+    query: $('#query').value.trim(), depth: $('#depth').value,
+    marketplaces: [...document.querySelectorAll('input[name=mkt]:checked')].map(i => i.value),
+    min_rating: Number($('#min_rating').value), min_ratings_count: Number($('#min_ratings').value),
+    budget_jod: $('#budget').value ? Number($('#budget').value) : null,
+    include_other_sellers: $('#other_sellers').checked, allow_used: $('#allow_used').checked,
+  };
+  if (!body.marketplaces.length) return alert('Pick at least one marketplace.');
+  try { localStorage.setItem('sh.query', body.query); } catch (e) {}
+  $('#log').innerHTML = ''; $('#results').hidden = true; $('#banners').innerHTML = '';
+  try { const r = await api('POST', '/hunts', body); attach(r.run_id); } catch (e) { alert(e.message); }
+});
+$('#cancel').addEventListener('click', async () => { if (currentRun) { try { await api('POST', `/hunts/${currentRun}/cancel`); } catch (e) { alert(e.message); } } });
+
+refreshStatus();
+</script>
+</body>
+</html>

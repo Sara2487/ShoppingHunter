@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "web-fake",
+      "runtimeExecutable": ".venv/Scripts/python.exe",
+      "runtimeArgs": ["scripts/serve.py", "--fake-llm", "--fake-browser"],
+      "port": 8765
+    },
+    {
+      "name": "web-live-fakellm",
+      "runtimeExecutable": ".venv/Scripts/python.exe",
+      "runtimeArgs": ["scripts/serve.py", "--fake-llm", "--headless"],
+      "port": 8765
+    },
+    {
+      "name": "web",
+      "runtimeExecutable": ".venv/Scripts/python.exe",
+      "runtimeArgs": ["scripts/serve.py"],
+      "port": 8765
+    }
+  ]
+}

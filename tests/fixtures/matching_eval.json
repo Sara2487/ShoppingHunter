@@ -1,0 +1,23 @@
+{
+  "query": "Logitech MX Master 3S",
+  "canonical_brand": "Logitech",
+  "canonical_model": "MX Master 3S",
+  "cases": [
+    {"ref": "amazon.com:E000000001", "title": "Logitech MX Master 3S - Wireless Performance Mouse, Ergo, 8K DPI, Quiet Clicks - Graphite", "expect": true, "note": "exact"},
+    {"ref": "amazon.com:E000000002", "title": "Logitech MX Master 3S Wireless Mouse - Pale Gray", "expect": true, "note": "colour variant"},
+    {"ref": "amazon.com:E000000003", "title": "Logitech MX Master 3S for Mac Wireless Bluetooth Mouse - Space Grey", "expect": true, "note": "regional/edition variant, medium"},
+    {"ref": "amazon.com:E000000004", "title": "Logitech MX Master 3 Advanced Wireless Mouse - Graphite", "expect": false, "note": "previous generation"},
+    {"ref": "amazon.com:E000000005", "title": "Logitech MX Master 4 Wireless Mouse with Haptic Actions Ring", "expect": false, "note": "next generation"},
+    {"ref": "amazon.com:E000000006", "title": "Hard Travel Case for Logitech MX Master 3S / 3 Wireless Mouse - Black", "expect": false, "note": "accessory"},
+    {"ref": "amazon.com:E000000007", "title": "Replacement Mouse Feet Skates for Logitech MX Master 3S (2 sets)", "expect": false, "note": "replacement part"},
+    {"ref": "amazon.com:E000000008", "title": "Logitech MX Master 3S Mouse Bundle with Desk Mat and Cleaning Cloth", "expect": false, "note": "bundle"},
+    {"ref": "amazon.com:E000000009", "title": "Logitech MX Master 3S Wireless Mouse, Graphite (Renewed)", "expect": false, "note": "renewed"},
+    {"ref": "amazon.com:E000000010", "title": "Ergonomic Wireless Mouse MX Master 3S Style 8000 DPI Rechargeable - Black", "expect": false, "note": "knock-off style"},
+    {"ref": "amazon.com:E000000011", "title": "Logitech MX Anywhere 3S Compact Wireless Mouse - Graphite", "expect": false, "note": "different model, same suffix"},
+    {"ref": "amazon.com:E000000012", "title": "Logitech MX Master 3S Wireless Mouse - Graphite, 910-006556", "expect": true, "note": "with part number"},
+    {"ref": "amazon.com:E000000013", "title": "Logitech MX Keys S Combo (MX Keys S + MX Master 3S + Palm Rest)", "expect": false, "note": "combo bundle"},
+    {"ref": "amazon.com:E000000014", "title": "Logitech Mouse Graphite", "expect": false, "note": "sparse title -> ambiguous"},
+    {"ref": "amazon.com:E000000015", "title": "Logitech MX Mster 3S Performance Wireless Mouse - Graphite", "expect": true, "note": "typo in title; LLM should still match, fake may not"},
+    {"ref": "amazon.com:E000000016", "title": "Logitech MX Master 3S for Business Wireless Mouse - Graphite", "expect": true, "note": "business edition, medium"}
+  ]
+}
