@@ -18,9 +18,9 @@ Built on the OpenAI Agents SDK (Python), Playwright and FastAPI. Runs locally.
 ## Why not just use Amazon's search bar?
 
 This is the fair question, and it is the reason the project exists. The search bar answers
-*"what does this item cost in this one shop?"*. That is not the question you have. Your question
-is *"of every version of this product, in any of the three Amazons, from any seller, which one is
-cheapest once it reaches Jordan?"*. Amazon has no screen that answers that.
+*"what does this item cost in this one shop?"*. That is not the question we hade. Our question
+was *"of every version of this product, in any of the three Amazons, from any seller, which one is
+the best value for for money once it reaches Jordan?"*. Amazon has no screen that answers that.
 
 | What you want | What the search bar gives you |
 |---|---|
